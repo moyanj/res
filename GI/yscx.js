@@ -29,13 +29,16 @@ if (window.location.href.indexOf("bbs.mihoyo.com/ys") > 0) {
                             } else if (baseInfoJson.retcode == -1) {
                                 console.log('查询无结果');
                                 alert('查询无结果，可能造成这种情况的原因：1.UID不存在 2.没有在米游社同步并公开角色信息');
+			   location.reload();
                             } else {
 			   console.log("查询失败！")
                                 alert('查询失败！' + baseInfoJson.message);
+                                location.reload();
                             }
                         }).catch(err => {
                             console.log('渲染完成');
                             alert('查询失败！' + err);
+		         location.reload();
                         });
                     });
                 });
@@ -155,6 +158,7 @@ if (window.location.href.indexOf("bbs.mihoyo.com/ys") > 0) {
         };
     }
     window._ysq = new GenshinInfoFetcher();
+    location.reload();
 } else {
     alert('页面地址错误，请在米游社原神页面使用本书签：https://bbs.mihoyo.com/ys/');
     window.open("https://bbs.mihoyo.com/ys/")
